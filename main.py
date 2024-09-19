@@ -5,17 +5,19 @@ from traditional import *
 from strassen import *
 
 def crearMatriz(tam):
-    return np.random.randint(0, 10, (tam, tam))
+    return np.random.randint(0, 6, (tam, tam), dtype=np.int8)
 
-n = 7
+n = 2
 A = crearMatriz(2**n)
 B = crearMatriz(2**n)
 
 if __name__ == "__main__":
+    np.set_printoptions(suppress=True,precision=2)
+
     # Imprimir tamaño de matrices
     print(f"Multiplicando matrices de tamaño {A.shape[1]}x{B.shape[0]}\n")
 
-    print("Starting traditional matrix multiplication...\n")
+    print("Starting traditional matrix multiplication...")
     inicio = time()
     result_traditional = traditional_matrix_multiplication(A, B)
     fin = time()
@@ -29,7 +31,7 @@ if __name__ == "__main__":
     print("Resuming...\n")
 
     # Medir el tiempo de ejecución
-    print("Starting Strassen multiplication\n")
+    print("Starting Strassen multiplication")
     inicio = time()
     result_strassen = strassen_multiplication(A, B)
     fin = time()
@@ -38,16 +40,16 @@ if __name__ == "__main__":
     # Imprimir tiempo de ejecución
     print(f"Execution time: {fin - inicio:.8f} s\n")
 
-    print("Starting equality checking...\n")
+    print("Starting equality checking...")
 
     if np.array_equal(result_traditional, result_strassen):
         print("Matrices result_traditional and result_strassen are equal")
     else:
         print("Matrices result_traditional and result_strassen are not equal")
 
-    print("Saving matrices...")
+    print("\nSaving matrices...")
     print("Creating result_traditional.txt...")
-    np.savetxt('result_traditional.txt', result_traditional)
+    np.savetxt(fname='result_traditional.txt', X=result_traditional, fmt='%.2f')
 
-    print("\nCreating result_strassen.txt...")
-    np.savetxt('result_strassen.txt', result_strassen)
+    print("Creating result_strassen.txt...")
+    np.savetxt(fname='result_strassen.txt', X=result_strassen, fmt='%.2f')
