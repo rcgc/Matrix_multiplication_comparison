@@ -45,3 +45,9 @@ if __name__ == "__main__":
     else:
         print("Matrices result_traditional and result_strassen are not equal")
 
+    print("Saving matrices...")
+    print("Creating result_traditional.txt...")
+    np.savetxt('result_traditional.txt', result_traditional)
+
+    print("\nCreating result_strassen.txt...")
+    np.savetxt('result_strassen.txt', result_strassen)
