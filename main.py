@@ -7,7 +7,7 @@ from strassen import *
 def crearMatriz(tam):
     return np.random.randint(0, 10, (tam, tam))
 
-n = 8
+n = 9
 A = crearMatriz(2**n)
 B = crearMatriz(2**n)
 
@@ -26,7 +26,7 @@ if __name__ == "__main__":
 
     print("Waiting for next algorithm...")
     sleep(3)
-    print("Resuming...")
+    print("Resuming...\n")
 
     # Medir el tiempo de ejecución
     print("Starting Strassen multiplication\n")

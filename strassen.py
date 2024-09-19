@@ -23,7 +23,8 @@ def strassen_multiplication(A, B):
     e, f, g, h = dividirCuadrante(B)
 
     # Crear un pool de procesos y realizar las multiplicaciones en paralelo
-    with Pool(cpu_count()) as pool:
+    # cpu_count()
+    with Pool(1) as pool:
         resultados = pool.map(multiplicacion_paralelo, [(a, e), (b, g), (a, f), (b, h), 
                                                         (c, e), (d, g), (c, f), (d, h)])
 
