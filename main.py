@@ -7,7 +7,7 @@ from strassen import *
 def crearMatriz(tam):
     return np.random.randint(0, 10, (tam, tam))
 
-n = 9
+n = 7
 A = crearMatriz(2**n)
 B = crearMatriz(2**n)
 
@@ -17,9 +17,9 @@ if __name__ == "__main__":
 
     print("Starting traditional matrix multiplication...\n")
     inicio = time()
-    result = traditional_matrix_multiplication(A, B)
+    result_traditional = traditional_matrix_multiplication(A, B)
     fin = time()
-    #print(result)
+    #print(result_traditional)
 
     # Imprimir tiempo de ejecución
     print(f"Execution time: {fin - inicio:.8f} s\n")
@@ -31,9 +31,17 @@ if __name__ == "__main__":
     # Medir el tiempo de ejecución
     print("Starting Strassen multiplication\n")
     inicio = time()
-    C = strassen_multiplication(A, B)
+    result_strassen = strassen_multiplication(A, B)
     fin = time()
-    #print(C)
+    #print(result_strassen)
 
     # Imprimir tiempo de ejecución
     print(f"Execution time: {fin - inicio:.8f} s\n")
+
+    print("Starting equality checking...\n")
+
+    if np.array_equal(result_traditional, result_strassen):
+        print("Matrices result_traditional and result_strassen are equal")
+    else:
+        print("Matrices result_traditional and result_strassen are not equal")
+
